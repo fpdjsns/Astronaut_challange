@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<head>
+   <meta charset="UTF-8"/>
+   <title>astronaut</title>
+   <style>
+    body {
+      background-color: lightgrey;
+    }
+
+    #title {
+      background-color: #30353C;
+      height: 30em;
+      width: 100%;
+
+    }
+    #title p {
+      font-family: 'Open Sans Condensed', sans-serif;
+      color: lightgrey;
+      text-transform: uppercase;
+      font-size: 3em;
+      letter-spacing: 0.2em;
+      margin:auto;
+      text-align: center;
+      position: relative;
+      top: 0em;
+    }
+
+    #header a {
+      text-decoration: overline;
+      color: lightgrey;
+    }
+
+    #header a:hover {
+      text-decoration: overline;
+      color: #F7BE3C;
+    }
+    #luna{
+
+       font-size: 4em;
+       text-align: center;
+       color: white;
+       text-shadow: 0 0 90px #FFf ; 
+       /*box-shadow:0 0 90px #FFf;*/
+
+    }
+    #start {
+        height: 6em;
+        width: 100%;
+        background-color: #E6E6E6;
+        box-shadow: 0px 10px 10px #B8B8B8;
+    }
+    #start p {
+    font-family: 'Open Sans Condensed', sans-serif;
+    color: lightgrey;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    font-size: 1em;
+    letter-spacing: 0.1em;
+    margin : auto;
+    position: relative;
+    top: 0.95em;
+}
+span {
+  text-decoration: none;
+  color:#6C6C6C;
+}
+
+span:hover {
+  color: #EDC745;
+}
+#game{
+    margin-left: auto;
+    margin-right: auto;
+    width:800px; 
+    height:600px;
+  display: none; 
+}
+#canvas{
+  background: black;
+}
+   </style>
+
+   <script type="text/javascript" src ="Astronaut_Challange.js"></script>
+   <script type="text/javascript">
+   var titleOpacity=1;
+   var tid;
+   var game;
+   function destroytitle(){
+    title = document.getElementById('title');
+    start = document.getElementById('start');
+    game = document.getElementById('game');
+    titleOpacity -=0.1;
+    title.style.opacity = titleOpacity.toString();
+
+    if(titleOpacity<=0){
+      title.style.display = "none"; 
+      game.style.display = "block";
+      document.getElementById("txt").innerHTML="playing the game ";
+      init();
+      clearInterval(tid);
+    }
+   }
+
+
+   </script>
+</head>
+<body>
+   <div id="title">
+    <p>
+    <a id = "luna">●</a><br><br>
+    <a onclick="tid=setInterval(destroytitle,100);">Astronaut Challenge</a>
+    </p>
+    </div>
+    <div id = "game"  > 
+      <canvas id="canvas" width="800" height="600"></canvas>
+    </div>
+    <div id ="start">
+      <p><span id="txt">Do you want to play the game? click the title!</span></p>
+    </div>
+    <embed id = "song" src="Universe.mp3" loop="0" hidden="true" ></embed>
+</body>
+</html>
